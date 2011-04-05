@@ -1,0 +1,8 @@
+%h1 Test
+= form_for '#', :id => 'add_form' do |f|
+  = f.text_area "input_box"
+  %div#progress{ :style => 'display: none'}
+    %img{ :src => 'images/progress.gif' }
+  %ul#images
+  
+  

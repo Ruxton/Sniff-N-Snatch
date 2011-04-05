@@ -32,6 +32,10 @@ GEM
     builder (2.1.2)
     carrierwave (0.5.3)
       activesupport (~> 3.0)
+    daemons (1.1.2)
+    delayed_job (2.1.4)
+      activesupport (~> 3.0)
+      daemons
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.0.25)
@@ -78,6 +82,7 @@ PLATFORMS
 
 DEPENDENCIES
   carrierwave
+  delayed_job
   haml
   hpricot
   jquery-rails

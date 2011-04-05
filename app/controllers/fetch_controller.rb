@@ -1,6 +1,7 @@
 class FetchController < ApplicationController
   
   require 'lib/image_list'
+  require 'lib/fetch_job'
   
   def index
     if !params[:url]
@@ -15,8 +16,9 @@ class FetchController < ApplicationController
         logger.debug('searched..')
         if image.nil?
           image = Image.create( :address => href )
+          Delayed::Job.enqueue FetchJob.new(image.url_hash)
         end
-        href = 'http://imgr.local/images/' + image.url_hash.to_s
+        href = 'http://imgr.local/bucket/image_file/' + image.url_hash.to_s
       end
       render :json => images   
     end

@@ -13,6 +13,7 @@ gem 'haml'
 gem 'jquery-rails'
 gem 'rmagick'
 gem 'carrierwave'
+gem 'delayed_job'
 
 # Use unicorn as the web server
 # gem 'unicorn'

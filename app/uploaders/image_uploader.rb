@@ -3,7 +3,7 @@
 class ImageUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or ImageScience support:
-  # include CarrierWave::RMagick
+  include CarrierWave::RMagick
   # include CarrierWave::ImageScience
 
   # Choose what kind of storage to use for this uploader:
@@ -13,7 +13,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "images/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    "bucket/#{mounted_as}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -22,7 +22,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  # process :scale => [200, 300]
+  process :resize_to_fill => [100, 100]
   #
   # def scale(width, height)
   #   # do something
@@ -40,8 +40,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Override the filename of the uploaded files:
-  # def filename
-  #   "something.jpg" if original_filename
-  # end
+  def filename
+    "#{model.url_hash}"
+  end
 
 end

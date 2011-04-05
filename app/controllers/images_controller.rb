@@ -12,7 +12,7 @@ class ImagesController < ApplicationController
   
   def chargeup
     Image.where( :fetched => false ).each do |image|
-      image.image_file = grabit(image.address)
+      image.remote_image_file_url = image.address
       image.fetched = true
       image.save!
     end

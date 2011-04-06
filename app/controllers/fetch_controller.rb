@@ -9,7 +9,9 @@ class FetchController < ApplicationController
       url = params[:url]
       
       image_list = ImageList.new(url)
-      images = image_list.get_images      
+      images = image_list.get_images
+      metadata = image_list.get_metadata
+      
       images.map! do |href|
         
         image = Image.where( :address => href ).first
@@ -20,7 +22,7 @@ class FetchController < ApplicationController
         end
         href = image_url(image.url_hash.to_s)
       end
-      render :json => { :status => 'ok', :images => images }
+      render :json => { :status => 'ok', :images => images, :metadata => metadata }
     end
   end
   

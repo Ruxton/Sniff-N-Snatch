@@ -9,10 +9,13 @@ var urlwatcher = {
   
   get: function(inUrl) {
     console.log('getting '+inUrl);
+    $('#link_information').show();    
     $.ajax({
       url: 'http://imgr.local/fetch/?url='+encodeURI(inUrl),
-      success: function(data){
+      success: function(data){        
         $('#progress').hide();
+        $('#link_information h4').append(data.metadata.title)
+        $('#link_information p').append(data.metadata.description)
         urlwatcher.imageList(data.images)
         $('ul#images li:first').show();
       },

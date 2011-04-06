@@ -11,6 +11,7 @@ class FetchController < ApplicationController
       image_list = ImageList.new(url)
       images = image_list.get_images      
       images.map! do |href|
+        
         image = Image.where( :address => href ).first
         logger.debug('searched..')
         if image.nil?

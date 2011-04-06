@@ -5,7 +5,11 @@ class ImagesController < ApplicationController
       render :text => 'blah'
     else
       @image = Image.find_by_url_hash(params[:id])
-      
+      if !@image.fetched
+        @image.remote_image_file_url = @image.address
+        @image.fetched = true
+        @image.save!
+      end
       redirect_to @image.image_file.url
     end
   end

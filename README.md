@@ -1,4 +1,4 @@
-# The Image Snatching URL Sniffer
+# Sniff N Snatch
 
 On facebook when you're updating your status, if you enter a URL facebook will go off and fetch some information about that URL, including images.  This my implementation of that.
 

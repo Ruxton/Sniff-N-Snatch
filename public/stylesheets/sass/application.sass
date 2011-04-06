@@ -1,25 +1,30 @@
 textarea
   width: 410px
 #link_information
+  font-family: "lucida grande",tahoma,verdana,arial,sans-serif
   width: 400px
   display: block
   border: 1px solid black
-  background: #aaaaaa
-  padding: 4px  
+  background: #FFFFFF
+  padding: 10px  
   h4
+    font-size: 12px
     margin: 0
-    margin-bottom: 0.3em
-    margin-left: 110px
+    margin-left: 115px
   p
+    font-size: 11px
     margin: 0
     padding: 0
-    margin-left: 110px
-  p::after
-    content: "."
-    height: 0
-    clear: both
-    display: block
-    visibility: hidden
+    margin-left: 115px
+    &.summary
+      color: #666
+      margin-bottom: 0.5em
+    &::last::after
+      content: "."
+      height: 0
+      clear: both
+      display: block
+      visibility: hidden
   ul#images
     margin: 0
     padding: 0
@@ -33,6 +38,8 @@ textarea
         padding: 2px
         border: 1px solid black
   #buttons
+    font-size: 11px
+    margin-left: 115px
     margin-top: 5px
     background-color: #bbbbbb
     border: 1px solid #cccccc

@@ -8,7 +8,10 @@
   %body
     = yield
 
-/ :javascript
-/   var data=['#{image_url('ff246f47d2a981d928433c4e18b1414db5122e65edf25a3107c6c0e2a0f54281')}','#{image_url('f7f3df0133e7d94566c832085f17c1a4c545630297dfa8f4477819563dac1563')}'];
-/   urlwatcher.imageList(data);
-/   $('ul#images li:first').show();
+:javascript
+  var somedata=['#{image_url('ff246f47d2a981d928433c4e18b1414db5122e65edf25a3107c6c0e2a0f54281')}','#{image_url('f7f3df0133e7d94566c832085f17c1a4c545630297dfa8f4477819563dac1563')}'];
+  $('#link_information').show();
+  var metadata={"title":"Ignite Blog by Ruxton | RuxtonAU | Greg Tangey | iTALM - iTunes Affiliate Link Maker Plugin","url":"http://ignite.digitalignition.net","description":"The personal blog of Ruxton (Greg Tangey) about all things that are interesting or maybe uninteresting?"};  
+  urlwatcher.linkInfo(metadata);
+  urlwatcher.imageList(somedata);
+  $('ul#images li:first').show();

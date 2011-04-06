@@ -1,11 +1,14 @@
 %h1 Test
 = form_for '#', :id => 'add_form' do |f|
   = f.text_area "input_box"
-  %div#progress{ :style => 'display: none'}
-    %img{ :src => 'images/progress.gif' }
-  #horizontal_carousel
+  #link_information{ :style => 'display: none'}
+    %div#progress{ :style => 'display: none'}
+      %img{ :src => 'images/progress.gif' }
     %ul#images
-  %a.prev{ :href => '#' }
-    <<<
-  %a.next{ :href => '#' }
-    >>>
+    %h4
+    %p
+    %div#buttons
+      %a.prev{ :href => '#' }
+        prev
+      %a.next{ :href => '#' }
+        next

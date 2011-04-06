@@ -26,9 +26,9 @@ var urlwatcher = {
   },
   
   linkInfo: function(data) {
-    $('#link_information h4').append(data.title);
-    $('#link_information p.summary').append(data.url);
-    $('#link_information p.description').append(data.description);
+    $('#link_information h4').text(data.title);
+    $('#link_information p.summary').text(data.url);
+    $('#link_information p.description').text(data.description);
   },
   
   imageList: function(data) {

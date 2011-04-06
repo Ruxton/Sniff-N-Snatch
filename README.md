@@ -7,16 +7,22 @@ On facebook when you're updating your status, if you enter a URL facebook will g
  * Async processing of URL fetch/image return
  * Prettier
 
-## Thanks
+## Thanks To
+
+### People Who Helped
 
  * [sj26][2]
  * [nekodex][3]
+ 
+### Things Used
  
  * [nokogiri][4]
  * [pismo][5]
  * [haml][6]
  * [carrierwave][7]
  * [jquery][8]
+
+### Idea Generatio
  
  * [facebook][9]
 

@@ -13,7 +13,7 @@ var urlwatcher = {
       url: 'http://imgr.local/fetch/?url='+encodeURI(inUrl),
       success: function(data){
         $('#progress').hide();
-        urlwatcher.imageList(data)
+        urlwatcher.imageList(data.images)
         $('ul#images li:first').show();
       },
       error: function(data) {
@@ -31,7 +31,8 @@ var urlwatcher = {
       img.attr('width','100');
       img.attr('height','100');
       li = $("<li/>").html(img);
-      li.attr('style', 'display: none');
+      li.attr('style', 'display: inline-block');
+      li.hide();
       target.append(li);
     });    
   },

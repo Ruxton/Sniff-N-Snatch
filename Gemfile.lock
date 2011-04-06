@@ -34,10 +34,6 @@ GEM
     carrierwave (0.5.3)
       activesupport (~> 3.0)
     chronic (0.3.0)
-    daemons (1.1.2)
-    delayed_job (2.1.4)
-      activesupport (~> 3.0)
-      daemons
     erubis (2.6.6)
       abstract (>= 1.0.0)
     fast-stemmer (1.0.0)
@@ -95,7 +91,6 @@ PLATFORMS
 
 DEPENDENCIES
   carrierwave
-  delayed_job
   haml
   jquery-rails
   pismo

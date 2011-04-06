@@ -14,13 +14,16 @@ class ImageList
     
     # get HTML content form URI with Hpricot
     begin
-      html = Hpricot(getasite(@url))
+      @pismo = Pismo::Document.new(uri.to_s)      
+      html = @pismo.html
     rescue Exception => e
+      Rails.logger.debug('PISMO Error: '+e.to_s)
       return @images
     end
     
-    @base = html.search("base")
-    urls = html.search("img")
+    @base = @pismo.doc.search("base")
+    urls = @pismo.doc.search("img")
+    
     urls.each do |tempUrl|    
       @images << tempUrl[:src]
     end

@@ -22,7 +22,8 @@ class ImageList
   def get_metadata
     metadata = {
       :title => @pismo.doc.at_css('title').text,
-      :description => @pismo.lede
+      :url => @url,
+      :description => @pismo.description
     }
     
     metadata

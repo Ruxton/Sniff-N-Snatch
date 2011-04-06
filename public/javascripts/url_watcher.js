@@ -14,15 +14,21 @@ var urlwatcher = {
       url: 'http://imgr.local/fetch/?url='+encodeURI(inUrl),
       success: function(data){        
         $('#progress').hide();
-        $('#link_information h4').append(data.metadata.title)
-        $('#link_information p').append(data.metadata.description)
-        urlwatcher.imageList(data.images)
+        console.log(data.metadata);
+        urlwatcher.linkInfo(data.metadata);
+        urlwatcher.imageList(data.images);
         $('ul#images li:first').show();
       },
       error: function(data) {
         alert('There was an error.');
       }
     });
+  },
+  
+  linkInfo: function(data) {
+    $('#link_information h4').append(data.title);
+    $('#link_information p.summary').append(data.url);
+    $('#link_information p.description').append(data.description);
   },
   
   imageList: function(data) {

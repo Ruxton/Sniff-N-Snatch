@@ -63,12 +63,13 @@ class ImageList
       end
       
       uri = uri.gsub(' ','%20')
-      
+
       header = headercheck(uri)
       Rails.logger.debug('Should be empty: ' + header.inspect)
       if Integer(header['Content-Length']) > 6000
         return_arr << uri
       end
+      
     end
     
     return_arr 

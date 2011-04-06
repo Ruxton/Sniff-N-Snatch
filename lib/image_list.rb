@@ -4,10 +4,6 @@ class ImageList
   def initialize(url)
     @url = url
     @images = [ ]
-    @base = ''
-  end
-  
-  def get_images
 
     # parse the inputted URL through URI class
     uri = URI.parse(@url)
@@ -16,12 +12,24 @@ class ImageList
     begin
       @pismo = Pismo::Document.new(uri.to_s)      
       html = @pismo.html
-    rescue Exception => e
-      Rails.logger.debug('PISMO Error: '+e.to_s)
-      return @images
+    rescue
     end
     
     @base = @pismo.doc.search("base")
+
+  end
+  
+  def get_metadata
+    metadata = {
+      :title => @pismo.doc.at_css('title').text,
+      :description => @pismo.lede
+    }
+    
+    metadata
+  end
+  
+  def get_images
+
     urls = @pismo.doc.search("img")
     
     urls.each do |tempUrl|    

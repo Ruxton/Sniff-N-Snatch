@@ -22,7 +22,7 @@ On facebook when you're updating your status, if you enter a URL facebook will g
  * [carrierwave][7]
  * [jquery][8]
 
-### Idea Generatio
+### Idea Generation
  
  * [facebook][9]
 

@@ -7,7 +7,7 @@ gem 'rails', '3.0.5'
 
 gem 'sqlite3'
 
-gem 'hpricot'
+gem 'pismo'
 
 gem 'haml'
 gem 'jquery-rails'

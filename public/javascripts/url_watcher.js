@@ -1,5 +1,7 @@
 var urlwatcher = {
   
+  images: [ ],
+  
   setup: function() {
     this.addUrlListener();
     this.nextClick();
@@ -7,9 +9,12 @@ var urlwatcher = {
     console.log('setup');
   },
   
+  
+  
   get: function(inUrl) {
     console.log('getting '+inUrl);
     $('#link_information').show();    
+    urlwatcher.images = [ ];
     $.ajax({
       url: 'http://imgr.local/fetch/?url='+encodeURI(inUrl),
       success: function(data){        
@@ -17,12 +22,39 @@ var urlwatcher = {
         console.log(data.metadata);
         urlwatcher.linkInfo(data.metadata);
         urlwatcher.imageList(data.images);
-        $('ul#images li:first').show();
+        urlwatcher.imageSwitch();
+//        $('ul#images li:first').show();
       },
       error: function(data) {
         alert('There was an error.');
       }
     });
+  },
+  
+  imageSwitch: function() {
+    target = $('#images #imageone img');
+    curIndex = parseInt(target.attr('data-index'));
+    arrLen = (urlwatcher.images.length)-1;
+    
+    if( curIndex == -1 || curIndex == arrLen ) {
+      console.log('First');
+      console.log(urlwatcher.images[0]);
+            
+      target.attr('src',urlwatcher.images[0]);
+      target.attr('data-index',0);
+      
+      console.log('Set Index: 0');              
+    }
+    else
+    {
+      console.log('Third');
+      console.log(urlwatcher.images[curIndex+1]);
+      target.attr('src', urlwatcher.images[curIndex+1] );
+      target.attr('data-index', curIndex+1);        
+      console.log('Set Index: '+(curIndex+1));        
+    }
+    
+    
   },
   
   linkInfo: function(data) {
@@ -31,18 +63,9 @@ var urlwatcher = {
     $('#link_information p.description').text(data.description);
   },
   
-  imageList: function(data) {
-    target = $('ul#images');
-    target.children('li').remove();
-    $.each(data, function() {
-      img = $("<img/>");
-      img.attr('src',this);
-      img.attr('width','100');
-      img.attr('height','100');
-      li = $("<li/>").html(img);
-      li.attr('style', 'display: inline-block');
-      li.hide();
-      target.append(li);
+  imageList: function(data) {    
+    $.each(data, function(imgsrc) {
+      urlwatcher.images.push(data[imgsrc]);
     });    
   },
   
@@ -57,6 +80,7 @@ var urlwatcher = {
         if(urlPos != -1)
         { 
           match = val.slice(urlPos);
+          match = $.trim(match);
           $('#progress').show();
           urlwatcher.get(match)
         }
@@ -66,7 +90,7 @@ var urlwatcher = {
   
   nextClick: function() {
     $('a.next').live('click', function() {
-      urlwatcher.doNextClick();
+      urlwatcher.imageSwitch();
       return false;
     });
   },
@@ -86,7 +110,7 @@ var urlwatcher = {
   
   prevClick: function() {
     $('a.prev').live('click', function() {
-      urlwatcher.doPrevClick();
+      urlwatcher.imageSwitch();
       return false;    
     });
   },

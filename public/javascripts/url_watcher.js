@@ -6,24 +6,20 @@ var urlwatcher = {
     this.addUrlListener();
     this.nextClick();
     this.prevClick();
-    console.log('setup');
   },
   
   
   
   get: function(inUrl) {
-    console.log('getting '+inUrl);
     $('#link_information').show();    
     urlwatcher.images = [ ];
     $.ajax({
       url: 'http://imgr.local/fetch/?url='+encodeURI(inUrl),
       success: function(data){        
         $('#progress').hide();
-        console.log(data.metadata);
         urlwatcher.linkInfo(data.metadata);
         urlwatcher.imageList(data.images);
         urlwatcher.imageSwitch();
-//        $('ul#images li:first').show();
       },
       error: function(data) {
         alert('There was an error.');
@@ -37,21 +33,13 @@ var urlwatcher = {
     arrLen = (urlwatcher.images.length)-1;
     
     if( curIndex == -1 || curIndex == arrLen ) {
-      console.log('First');
-      console.log(urlwatcher.images[0]);
-            
       target.attr('src',urlwatcher.images[0]);
       target.attr('data-index',0);
-      
-      console.log('Set Index: 0');              
     }
     else
     {
-      console.log('Third');
-      console.log(urlwatcher.images[curIndex+1]);
       target.attr('src', urlwatcher.images[curIndex+1] );
       target.attr('data-index', curIndex+1);        
-      console.log('Set Index: '+(curIndex+1));        
     }
     
     
@@ -70,7 +58,6 @@ var urlwatcher = {
   },
   
   addUrlListener: function() {
-    console.log('loaded');
     $('#_input_box').live('keypress', function(e) {
       if(e.charCode == 32)
       {

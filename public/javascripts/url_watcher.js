@@ -5,7 +5,7 @@ var urlwatcher = {
   setup: function() {
     this.addUrlListener();
     this.nextClick();
-    this.prevClick();
+    this.prevClick();    
   },
   
   
@@ -31,8 +31,12 @@ var urlwatcher = {
     target = $('#images #imageone img');
     curIndex = parseInt(target.attr('data-index'));
     arrLen = (urlwatcher.images.length)-1;
+    target.show();    
+    if(arrLen > 0) {
+      $('#buttons').show();
+    }
     
-    if( curIndex == -1 || curIndex == arrLen ) {
+    if( curIndex == -1 || curIndex == arrLen || curIndex > arrLen ) {
       target.attr('src',urlwatcher.images[0]);
       target.attr('data-index',0);
     }
@@ -41,14 +45,15 @@ var urlwatcher = {
       target.attr('src', urlwatcher.images[curIndex+1] );
       target.attr('data-index', curIndex+1);        
     }
-    
-    
+     
   },
   
   linkInfo: function(data) {
     $('#link_information h4').text(data.title);
+    $('#link_information h4').inlineEdit({buttons: ''});
     $('#link_information p.summary').text(data.url);
     $('#link_information p.description').text(data.description);
+    $('#link_information p.description').inlineEdit({control: 'textarea', buttons: ''});
   },
   
   imageList: function(data) {    

@@ -4,6 +4,7 @@ On facebook when you're updating your status, if you enter a URL facebook will g
 
 ## TODO
 
+ * Tests.. *shyly looks at ground*
  * Async processing of URL fetch/image return
  * Prettier
 

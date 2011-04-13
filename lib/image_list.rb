@@ -20,8 +20,9 @@ class ImageList
   end
   
   def get_metadata
+    title = @pismo.doc.at_css('title').text.strip
     metadata = {
-      :title => @pismo.doc.at_css('title').text,
+      :title => title,
       :url => @url,
       :description => @pismo.description
     }

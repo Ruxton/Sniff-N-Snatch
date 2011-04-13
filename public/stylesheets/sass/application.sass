@@ -1,12 +1,14 @@
-textarea
-  width: 410px
+#add_form
+  textarea
+    width: 410px
 #link_information
   font-family: "lucida grande",tahoma,verdana,arial,sans-serif
   width: 400px
   display: block
   border: 1px solid black
   background: #FFFFFF
-  padding: 10px  
+  padding: 10px
+  min-height: 108px
   h4
     font-size: 12px
     margin: 0
@@ -34,9 +36,10 @@ textarea
     list-style-type: none
     li
       img
+        display: none
         background-color: #ffffff
         padding: 2px
-        border: 1px solid black
+        border: 1px solid black    
   #buttons
     font-size: 11px
     margin-left: 115px
@@ -44,6 +47,13 @@ textarea
     background-color: #bbbbbb
     border: 1px solid #cccccc
     width: 104px
+    display: none
+    &::last::after
+      content: "."
+      height: 0
+      clear: both
+      display: block
+      visibility: hidden    
     .next
       text-align: center
       display: inline-block

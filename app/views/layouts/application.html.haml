@@ -30,11 +30,9 @@
     #container
       %header
         %h1
-          %a{ :href => '#', :onclick => '$("#link_information").show();$("#progress").show();return false;' }
-            Sniff N Snatch
+          Sniff N Snatch
         %h2
-          %a{ :href => '#', :onclick => '$("#progress").hide();urlwatcher.imageSwitch();return false;' }
-            The Image Snatching URL Sniffer      
+          The Image Snatching URL Sniffer      
       #main{:role => "main"}
         = yield
       %footer

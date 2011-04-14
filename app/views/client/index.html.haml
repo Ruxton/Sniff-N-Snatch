@@ -1,11 +1,5 @@
-%h1
-  %a{ :href => '#', :onclick => '$("#link_information").show();$("#progress").show();return false;' }
-    Sniff N Snatch
-%h2
-  %a{ :href => '#', :onclick => '$("#progress").hide();urlwatcher.imageSwitch();return false;' }
-    aka. The Image Snatching URL Sniffer
-= form_for '#', :id => 'add_form' do |f|
-  = f.text_area 'input_box', :rows => 4, :cols => 57
+= form_for '#', :html => { :id => 'add_form' } do |f|
+  = f.text_area 'input_box', :rows => 4, :cols => 57, :placeholder => 'Enter some text containing a URL'
   #link_information{ :style => 'display: none'}
     %div#progress{ :style => 'display: none'}
       %img{ :src => 'images/progress.gif' }
@@ -20,7 +14,7 @@
         prev
       %a.next{ :href => '#' }
         next
-    %br{ :clear => 'all' }
+    %br{ :clear => 'all'  }
         
 :javascript
   urlwatcher.images = ["http://imgr.local/images/c43ab998f739d0f3c3c349cb97bc30aef6e65be3471c6342c97b2466aae55b52", "http://imgr.local/images/3dd7394619e21056e2afe05e6c1133a1816faebb3a0366d42874ea7ba666d658", "http://imgr.local/images/8c8eff427106bd0f1c4f7b3306c07afe7e0a7a15b1eca99dffbd73370e8faddf", "http://imgr.local/images/620ea784ee157ebfba4306fc7efb7cceec0c9cd5e07a0d21e22dd0c419f95c55"];

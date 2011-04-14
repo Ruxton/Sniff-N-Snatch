@@ -74,6 +74,10 @@ var urlwatcher = {
           match = val.slice(urlPos);
           match = $.trim(match);
           $('#progress').show();
+          if(match.indexOf('http') == -1)
+          {
+            match = 'http://'+match
+          }
           urlwatcher.get(match)
         }
       }

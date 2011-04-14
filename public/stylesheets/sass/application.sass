@@ -1,5 +1,10 @@
+$bg: #2B2922
+$mainColour: #EFE4BD
+$textShadow: #A39770
+
 body
-  background: #232927
+  background: $bg
+//  background: #232927
 
 #container
   width: 960px
@@ -12,9 +17,9 @@ body header, body footer
   text-align: center  
   font-family: 'Bangers', arial, serif
   h1,h2
-    color: #E3D7BF  
+    color: $mainColour  
     font-size: 5.0em
-    text-shadow: 1px 1px 0px black, 2px 2px 0px #476871, 3px 3px 0px #476871, 4px 4px 0px #476871, 5px 5px 0px #476871, 6px 6px 0px #476871, 7px 7px 0px #476871
+    text-shadow: 1px 1px 0px black, 2px 2px 0px $textShadow, 3px 3px 0px $textShadow, 4px 4px 0px $textShadow, 5px 5px 0px $textShadow, 6px 6px 0px $textShadow, 7px 7px 0px $textShadow
     a,a:link,a:visited,a:hover,a:active
       color: #E3D7BF
       text-decoration: none
@@ -23,11 +28,16 @@ body header, body footer
     font-size: 1.3em
 
 body footer
+  font-size: 1.2em
+  color: $textShadow
   position: fixed
   bottom: 0
   width: 960px
   margin-left: auto
-  margin-right: auto  
+  margin-right: auto
+  a,a:link,a:visited,a:hover,a:active
+    color: $mainColour
+    text-decoration: none
     
 #add_form
   display: block

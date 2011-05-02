@@ -13,8 +13,10 @@ var urlwatcher = {
   get: function(inUrl) {
     $('#link_information').show();    
     urlwatcher.images = [ ];
+    hostname=window.location.hostname;
+    
     $.ajax({
-      url: 'http://imgr.local/fetch/?url='+encodeURI(inUrl),
+      url: 'http://'+hostname+'/fetch/?url='+encodeURI(inUrl),
       success: function(data){        
         $('#progress').hide();
         urlwatcher.linkInfo(data.metadata);
@@ -82,17 +84,17 @@ var urlwatcher = {
           urlwatcher.get(urls[0]);
         }
         
-        if(urlPos != -1)
-        { 
-          match = val.slice(urlPos);
-          match = $.trim(match);
-          $('#progress').show();
-          if(match.indexOf('http') == -1)
-          {
-            match = 'http://'+match
-          }
-          urlwatcher.get(match)
-        }
+        // if(urlPos != -1)
+        // { 
+        //   match = val.slice(urlPos);
+        //   match = $.trim(match);
+        //   $('#progress').show();
+        //   if(match.indexOf('http') == -1)
+        //   {
+        //     match = 'http://'+match
+        //   }
+        //   urlwatcher.get(match)
+        // }
       }
     });
   },

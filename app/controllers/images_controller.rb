@@ -22,16 +22,5 @@ class ImagesController < ApplicationController
     end
     render :text => 'done'
   end
-  
-  protected
-
-
-  def grabit urlIn
-  	url = URI.parse(urlIn)
-  	res = Net::HTTP.start(url.host, url.port) { |http|
-  		http.get(url.request_uri)
-  	}
-  	return res.body    
-  end
 
 end

@@ -10,7 +10,7 @@ class ImageList
     
     # get HTML content form URI with Hpricot
     begin
-      @pismo = Pismo::Document.new(uri.to_s)      
+      @pismo = Pismo::Document.new(uri.to_s)
       html = @pismo.html
     rescue
     end

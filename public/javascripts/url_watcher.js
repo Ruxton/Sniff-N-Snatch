@@ -67,8 +67,21 @@ var urlwatcher = {
       if(e.charCode == 32)
       {
         val = this.value;
-        URLMATCH = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
-        urlPos = val.search(URLMATCH);
+//      URLMATCH = /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi;
+//      urlPos = val.search(URLMATCH);
+
+        geturl = new RegExp(
+          "(^|[ \t\r\n])((ftp|http|https|gopher|mailto|news|nntp|telnet|wais|file|prospero|aim|webcal):(([A-Za-z0-9$_.+!*(),;/?:@&~=-])|%[A-Fa-f0-9]{2}){2,}(#([a-zA-Z0-9][a-zA-Z0-9$_.+!*(),;/?:@&~=%-]*))?([A-Za-z0-9$_+!*();/?:~-]))"
+          ,"g"
+        );
+        
+        urls = val.match(geturl);        
+
+        if(urls.length > 0) {
+          $('#progress').show();
+          urlwatcher.get(urls[0]);
+        }
+        
         if(urlPos != -1)
         { 
           match = val.slice(urlPos);
